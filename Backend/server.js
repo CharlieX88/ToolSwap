@@ -20,12 +20,14 @@ app.get('/', (req, res) => {
 
 
 // MongoDB connect karo, phir server start karo
+const PORT = process.env.PORT || 5000;
+
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
     console.log('MongoDB connected')
-    app.listen(process.env.PORT, () => {
-      console.log(`Server running on port ${process.env.PORT}`)
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`)
     })
   })
   .catch((err) => console.log('DB Error:', err.message))
